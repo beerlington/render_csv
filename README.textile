@@ -1,8 +1,8 @@
-= render_csv
+h1. render_csv
 
 Rails 3 CSV renderer for ActiveRecord collections
 
-== What is it?
+h2. What is it?
 
 The CSV renderer allows you to render any collection as CSV data.
 
@@ -25,7 +25,7 @@ Will render a CSV file similar to:
 |Sebastian's House|123 Pup St|Burlington|VT|05401|2011-07-26 03:30:22 UTC|2011-07-26 03:31:04 UTC|
 |Someone Else|999 Herp Derp|Burlington|VT|05401|2011-07-27 01:35:42 UTC|2011-07-27 01:35:42 UTC|
 
-== Usage Options
+h2. Usage Options
 
 There are a few options you can use to customize which columns are included in the CSV file
 
@@ -61,8 +61,8 @@ respond_to do |format|
 end
 </pre>
 
-== Contributing to render_csv
- 
+h2. Contributing to render_csv
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -71,7 +71,7 @@ end
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+h2. Copyright
 
 Copyright (c) 2011 Peter Brown. See LICENSE.txt for
 further details.
