@@ -17,10 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "render_csv"
   gem.homepage = "http://github.com/beerlington/render_csv"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Provides CSV rendering support to Rails 3 applications}
+  gem.description = %Q{Adds a custom CSV renderer to Rails 3 applications}
   gem.email = "github@lette.us"
   gem.authors = ["Peter Brown"]
+  gem.files = FileList['lib/**/*.rb'].to_a
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
