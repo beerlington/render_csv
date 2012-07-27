@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.email = %q{github@lette.us}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.textile"
   ]
   s.files = [
     "lib/render_csv.rb",
