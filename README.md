@@ -1,12 +1,12 @@
-h1. render_csv
+# render_csv
 
 Rails 3 CSV renderer for ActiveRecord collections
 
-h2. What is it?
+## What is it?
 
 The CSV renderer allows you to render any collection as CSV data.
 
-<pre>
+```ruby
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
@@ -16,52 +16,58 @@ class LocationsController < ApplicationController
     end
   end
 end
-</pre>
+```
 
 Will render a CSV file similar to:
 
-|name|address|city|state|zip|created_at|updated_at|
-|Pete's House|555 House Ln|Burlington|VT|05401|2011-07-26 03:12:44 UTC|2011-07-26 03:12:44 UTC|
-|Sebastian's House|123 Pup St|Burlington|VT|05401|2011-07-26 03:30:22 UTC|2011-07-26 03:31:04 UTC|
-|Someone Else|999 Herp Derp|Burlington|VT|05401|2011-07-27 01:35:42 UTC|2011-07-27 01:35:42 UTC|
+<table>
+  <tr>
+    <th>name</th><th>address</th><th>city</th><th>state</th><th>zip</th><th>created_at</th><th>updated_at</th>
+  </tr>
+  <tr>
+    <td>Pete's House</td><td>555 House Ln</td><td>Burlington</td><td>VT</td><td>05401</td><td>2011-07-26 03:12:44 UTC</td><td>2011-07-26 03:12:44 UTC</td>
+    <td>Sebastians's House</td><td>123 Pup St</td><td>Burlington</td><td>VT</td><td>05401</td><td>2011-07-26 03:30:44 UTC</td><td>2011-07-26 03:30:44 UTC</td>
+    <td>Someone Else</td><td>999 Herp Derp</td><td>Burlington</td><td>VT</td><td>05401</td><td>2011-07-26 03:30:44 UTC</td><td>2011-07-26 03:30:44 UTC</td>
+  </tr>
+</table>
 
-h2. Usage Options
+## Usage Options
 
 There are a few options you can use to customize which columns are included in the CSV file
 
-*Exclude columns*
+### Exclude columns
 
-<pre>
+```ruby
 respond_to do |format|
   format.csv  { render :csv => @locations, :except => [:id] }
 end
-</pre>
+```
 
-*Limit columns*
+### Limit columns
 
-<pre>
+```ruby
 respond_to do |format|
   format.csv  { render :csv => @locations, :only => [:address, :zip] }
 end
-</pre>
+```
 
-*Add methods as columns*
+### Add methods as columns
 
-<pre>
+```ruby
 respond_to do |format|
   format.csv  { render :csv => @locations, :add_methods => [:method1, :method2] }
 end
-</pre>
+```
 
-*Add methods as columns and exclude columns*
+### Add methods as columns and exclude columns
 
-<pre>
+```ruby
 respond_to do |format|
   format.csv  { render :csv => @locations, :except => [:id], :add_methods => [:method1, :method2] }
 end
-</pre>
+```
 
-h2. Contributing to render_csv
+## Contributing to render_csv
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -71,8 +77,8 @@ h2. Contributing to render_csv
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-h2. Copyright
+## Copyright
 
-Copyright (c) 2011 Peter Brown. See LICENSE.txt for
+Copyright (c) 2011-2012 Peter Brown. See LICENSE.txt for
 further details.
 
