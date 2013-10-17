@@ -1,6 +1,6 @@
 # render_csv
 
-Rails 3 CSV renderer for ActiveRecord collections
+Rails 3 and 4 CSV renderer for ActiveRecord collections
 
 ## What is it?
 
