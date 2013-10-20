@@ -1,8 +1,8 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'rspec'
-require 'active_record'
+require 'rails/all'
+require 'rspec/rails'
 require 'render_csv'
 
 # Requires supporting files with custom matchers and macros, etc,
