@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
     @locations = Location.all
 
     respond_to do |format|
-      format.csv  { render :csv => @locations }
+      format.csv  { render csv: @locations }
     end
   end
 end
@@ -58,7 +58,7 @@ There are a few options you can use to customize which columns are included in t
 
 ```ruby
 respond_to do |format|
-  format.csv  { render :csv => @locations, :except => [:id] }
+  format.csv  { render csv: @locations, except: [:id] }
 end
 ```
 
@@ -66,7 +66,7 @@ end
 
 ```ruby
 respond_to do |format|
-  format.csv  { render :csv => @locations, :only => [:address, :zip] }
+  format.csv  { render csv: @locations, only: [:address, :zip] }
 end
 ```
 
@@ -74,7 +74,7 @@ end
 
 ```ruby
 respond_to do |format|
-  format.csv  { render :csv => @locations, :add_methods => [:method1, :method2] }
+  format.csv  { render csv: @locations, add_methods: [:method1, :method2] }
 end
 ```
 
@@ -82,7 +82,7 @@ end
 
 ```ruby
 respond_to do |format|
-  format.csv  { render :csv => @locations, :except => [:id], :add_methods => [:method1, :method2] }
+  format.csv  { render csv: @locations, except: [:id], add_methods: [:method1, :method2] }
 end
 ```
 
