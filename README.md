@@ -83,6 +83,6 @@ end
 
 ## Copyright
 
-Copyright (c) 2011-2012 Peter Brown. See LICENSE.txt for
+Copyright (c) 2011-2013 Peter Brown. See LICENSE.txt for
 further details.
 
