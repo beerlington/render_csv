@@ -1,5 +1,10 @@
 # render_csv
 
+[![Build Status](https://travis-ci.org/beerlington/render_csv.png?branch=master)](https://travis-ci.org/beerlington/render_csv)
+[![Gem Version](https://badge.fury.io/rb/render_csv.png)](http://badge.fury.io/rb/render_csv)
+[![Code Climate](https://codeclimate.com/github/beerlington/render_csv.png)](https://codeclimate.com/github/beerlington/render_csv)
+[![Dependency Status](https://gemnasium.com/beerlington/render_csv.png)](https://gemnasium.com/beerlington/render_csv)
+
 Rails CSV renderer for ActiveRecord collections
 
 ## Rails & Ruby Versions Supported
