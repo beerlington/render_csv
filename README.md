@@ -1,6 +1,16 @@
 # render_csv
 
-Rails 3 and 4 CSV renderer for ActiveRecord collections
+Rails CSV renderer for ActiveRecord collections
+
+## Rails & Ruby Versions Supported
+
+*Rails:* 3.0.x - 4.0.x
+
+*Ruby:* 1.8.7, 1.9.2, 1.9.3 and 2.0.0
+
+## Installation
+
+The gem is hosted at [rubygems.org](https://rubygems.org/gems/render_csv)
 
 ## What is it?
 
@@ -71,18 +81,7 @@ respond_to do |format|
 end
 ```
 
-## Contributing to render_csv
-
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
-
 ## Copyright
 
 Copyright (c) 2011-2013 Peter Brown. See LICENSE.txt for
 further details.
-

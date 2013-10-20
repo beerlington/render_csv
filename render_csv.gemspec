@@ -4,8 +4,8 @@ require File.expand_path('../lib/render_csv/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Peter Brown"]
   gem.email         = ["github@lette.us"]
-  gem.description   = "Adds a custom CSV renderer to Rails 3 applications"
-  gem.summary       = "Adds a custom CSV renderer to Rails 3 applications"
+  gem.description   = "Adds a custom CSV renderer to Rails applications"
+  gem.summary       = "Adds a custom CSV renderer to Rails applications"
   gem.homepage      = "http://github.com/beerlington/render_csv"
   gem.license       = "MIT"
 
