@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Adds a custom CSV renderer to Rails 3 applications"
   gem.summary       = "Adds a custom CSV renderer to Rails 3 applications"
   gem.homepage      = "http://github.com/beerlington/render_csv"
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
