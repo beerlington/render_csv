@@ -1,3 +1,5 @@
+require 'csv'
+
 class Array
 
   # Converts an array to CSV formatted string
@@ -14,9 +16,15 @@ class Array
     columns -= options[:except].map(&:to_s) if options[:except]
     columns += options[:add_methods].map(&:to_s) if options[:add_methods]
 
-    csv = [columns.join(',')]
-    csv.concat(map {|v| columns.map {|c| v.send(c) }.join(',') })
+    csv_string = CSV.generate(encoding: 'utf-8') do |row|
+      row << columns
+      self.each do |obj|
+        row << columns.map { |c| obj.send(c) }
+      end
+    end
 
-    csv.join("\n")
+    csv_string
   end
 end
+
+
