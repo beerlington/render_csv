@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rails/all'
 require 'rspec/rails'
-require 'render_csv'
+require 'render_csv/extension'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

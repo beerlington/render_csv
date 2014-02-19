@@ -16,15 +16,11 @@ class Array
     columns -= options[:except].map(&:to_s) if options[:except]
     columns += options[:add_methods].map(&:to_s) if options[:add_methods]
 
-    csv_string = CSV.generate(encoding: 'utf-8') do |row|
+    CSV.generate(encoding: 'utf-8') do |row|
       row << columns
       self.each do |obj|
         row << columns.map { |c| obj.send(c) }
       end
     end
-
-    csv_string
   end
 end
-
-
