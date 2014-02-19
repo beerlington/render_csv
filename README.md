@@ -88,5 +88,5 @@ end
 
 ## Copyright
 
-Copyright (c) 2011-2013 Peter Brown. See LICENSE.txt for
+Copyright © 2011-2014 Peter Brown. See LICENSE.txt for
 further details.
