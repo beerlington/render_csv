@@ -1,73 +1,59 @@
 require './spec/spec_helper'
 
 describe Array do
-  let(:sebastian) { Dog.create!(:name => 'Sebastian', :age => 3, :weight => 76.8) }
-  let(:ruby) { Dog.create!(:name => 'Ruby', :age => 3, :weight => 68.2) }
-  let(:shelby) { Dog.create!(:name => 'Shelby', :age => 5, :weight => 64.0) }
-  let(:array) { [sebastian,ruby,shelby] }
+  let(:sebastian) { Dog.create!(name: "Sebastian O'Connor", age: 3, weight: 76.8) }
+  let(:ruby) { Dog.create!(name: 'Ruby', age: 3, weight: 68.2) }
+  let(:shelby) { Dog.create!(name: 'Shelby', age: 5, weight: 64.0) }
+  let(:array) { [sebastian, ruby, shelby] }
 
-  it 'should return an empty string if array is empty' do
-    [].to_csv.should eql('')
+  context 'array is empty' do
+    it 'returns an empty string' do
+      expect([].to_csv).to eql('')
+    end
   end
 
-  it 'should return return a csv of the array if it is not an AR class' do
-    [1,2,3].to_csv.should eql('1,2,3')
+  context 'object is not an instance of AR class' do
+    it 'returns a csv of the array' do
+      expect([1, 2, 3].to_csv).to eql('1,2,3')
+    end
   end
 
-  it 'should return a all columns with no option' do
-    csv = ["id,name,age,weight"]
-    csv << ["#{sebastian.id},Sebastian,3,76.8"]
-    csv << ["#{ruby.id},Ruby,3,68.2"]
-    csv << ["#{shelby.id},Shelby,5,64.0"]
-
-    array.to_csv.should eql(csv.join("\n"))
+  context 'options is blank' do
+    it 'returns all columns' do
+      expect(array.to_csv).to eql "id,name,age,weight\n1,Sebastian O'Connor,3,76.8\n2,Ruby,3,68.2\n3,Shelby,5,64.0\n"
+    end
   end
 
-  it 'should include only columns specified' do
-    csv = ["name,age"]
-    csv << ["Sebastian,3"]
-    csv << ["Ruby,3"]
-    csv << ["Shelby,5"]
+  context 'options with :only param' do
+    it 'returns only columns specified' do
+      options = { only: [:name, :age] }
 
-    options = {:only => [:name, :age] }
-
-    array.to_csv(options).should eql(csv.join("\n"))
-
+      expect(array.to_csv(options)).to eql "name,age\nSebastian O'Connor,3\nRuby,3\nShelby,5\n"
+    end
   end
 
-  it 'should exclude columns specified' do
-    csv = ["id,name,weight"]
-    csv << ["#{sebastian.id},Sebastian,76.8"]
-    csv << ["#{ruby.id},Ruby,68.2"]
-    csv << ["#{shelby.id},Shelby,64.0"]
+  context 'options with :exclude param' do
+    it 'excludes columns specified' do
+      options = { except: [:age] }
 
-    options = {:except => [:age] }
-
-    array.to_csv(options).should eql(csv.join("\n"))
+      expect(array.to_csv(options)).to eql "id,name,weight\n7,Sebastian O'Connor,76.8\n8,Ruby,68.2\n9,Shelby,64.0\n"
+    end
   end
 
-  it 'should include method values when specified' do
-    csv = ["id,name,age,weight,human_age"]
-    csv << ["#{sebastian.id},Sebastian,3,76.8,25"]
-    csv << ["#{ruby.id},Ruby,3,68.2,25"]
-    csv << ["#{shelby.id},Shelby,5,64.0,33"]
+  context 'options with :add_methods' do
+    it 'includes specified method values' do
+      options = { add_methods: [:human_age] }
 
-    options = {:add_methods => [:human_age] }
-
-    array.to_csv(options).should eql(csv.join("\n"))
-
+      expect(array.to_csv(options)).to eql "id,name,age,weight,human_age\n10,Sebastian O'Connor,3,76.8,25\n11,Ruby,3,68.2,25\n12,Shelby,5,64.0,33\n"
+    end
   end
 
-  it 'should include method values with other options' do
-    csv = ["age,weight,human_age"]
-    csv << ["3,76.8,25"]
-    csv << ["3,68.2,25"]
-    csv << ["5,64.0,33"]
+  context 'options with :expect and :add_methods' do
+    it 'includes method values with other options' do
+      options = { except: [:id,:name], add_methods: [:human_age] }
 
-    options = {:except => [:id,:name], :add_methods => [:human_age] }
-
-    array.to_csv(options).should eql(csv.join("\n"))
-
+      expect(array.to_csv(options)).to eql "age,weight,human_age\n3,76.8,25\n3,68.2,25\n5,64.0,33\n"
+    end
   end
 
 end
