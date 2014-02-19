@@ -1,3 +1,3 @@
 module RenderCsv
-  VERSION = "1.0.0"
+  VERSION = "2.0.0.beta1"
 end
