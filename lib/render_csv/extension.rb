@@ -1,13 +1,12 @@
 require 'csv'
 
-class Array
-
+module CsvRenderable
   # Converts an array to CSV formatted string
   # Options include:
   # :only => [:col1, :col2] # Specify which columns to include
   # :except => [:col1, :col2] # Specify which columns to exclude
   # :add_methods => [:method1, :method2] # Include addtional methods that aren't columns
-  def to_csv(options={})
+  def to_csv(options = {})
     return '' if empty?
     return join(',') unless first.class.respond_to? :column_names
 
