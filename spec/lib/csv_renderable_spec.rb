@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 
-describe CsvRenderable do
-  let(:csv_renderable_array) { array.extend CsvRenderable }
+describe RenderCsv::CsvRenderable do
+  let(:csv_renderable_array) { array.extend RenderCsv::CsvRenderable }
 
   context 'object is an array' do
 
