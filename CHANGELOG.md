@@ -7,6 +7,7 @@
     loaded before it tries to register itself. Should fix intermittent
     issues with it not working in production environments.
   * Use Ruby's CSV library instead of manually building strings.
+  * Does not extend the array class anymore
 
 ## 1.0.0
 
