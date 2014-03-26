@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 (unreleased)
+## 2.0.0
 
   * Removes support for Ruby 1.8.7.
   * Moves renderer into an after_initialize block so the Rails app is
