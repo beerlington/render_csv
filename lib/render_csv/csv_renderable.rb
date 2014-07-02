@@ -17,11 +17,20 @@ module RenderCsv
       columns += options[:add_methods].map(&:to_s) if options[:add_methods]
 
       CSV.generate(encoding: 'utf-8') do |row|
-        row << columns
+        row << localized_header(columns)
         self.each do |obj|
           row << columns.map { |c| obj.send(c) }
         end
       end
+    end
+
+    private
+
+    def localized_header(columns = nil)
+      model = first.class
+      columns = model.column_names unless columns
+
+      columns.map { |column_name| model.human_attribute_name(column_name) }
     end
   end
 end
