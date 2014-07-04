@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+ 
+ * Support rendering objects that already respond to `to_csv`
+
 ## 2.0.0
 
   * Removes support for Ruby 1.8.7.
