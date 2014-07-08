@@ -78,5 +78,19 @@ describe RenderCsv::CsvRenderable do
         expect(csv_renderable_array.to_custom_csv(options)).to eql "Возраст,Вес,Человеческий возраст\n3,76.8,25\n3,68.2,25\n5,64.0,33\n"
       end
     end
+
+    context 'options with :attributes' do
+      it 'includes columns and methods in specific order' do
+        options = { attributes: [:human_age, :id, :name] }
+        expect(csv_renderable_array.to_custom_csv(options)).to eql "Человеческий возраст,ID,Имя\n25,1,Sebastian O'Connor\n25,2,Ruby\n33,3,Shelby\n"
+      end
+    end
+
+    context 'options with :csv_options' do
+      it 'includes columns and methods with configured separators' do
+        options = { attributes: [:id, :name], csv_options: { col_sep: "\t", row_sep: "\r\n" } }
+        expect(csv_renderable_array.to_custom_csv(options)).to eql "ID\tИмя\r\n1\tSebastian O'Connor\r\n2\tRuby\r\n3\tShelby\r\n"
+      end
+    end
   end
 end
