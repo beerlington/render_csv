@@ -1,7 +1,13 @@
 # Changelog
 
+## 2.2.0
+ * Add :attributes option.
+ * Add :csv_options option.
+ * Optimization and additional validations.
+
+
 ## 2.1.0 (Beta)
- 
+
  * Support rendering objects that already respond to `to_csv`
 
 ## 2.0.0
