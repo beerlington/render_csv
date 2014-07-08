@@ -2,6 +2,12 @@
 require './spec/spec_helper'
 
 describe RenderCsv::CsvRenderable do
+  before(:all) do
+    Dog.create(name: "Sebastian O'Connor", age: 3, weight: 76.8)
+    Dog.create(name: 'Ruby', age: 3, weight: 68.2)
+    Dog.create(name: 'Shelby', age: 5, weight: 64.0)
+  end
+
   let(:csv_renderable_array) { array.extend RenderCsv::CsvRenderable }
 
   context 'object is an array' do
@@ -10,7 +16,7 @@ describe RenderCsv::CsvRenderable do
       let(:array) { Array.new }
 
       it 'returns an empty string' do
-        expect(csv_renderable_array.to_custom_csv).to eql('')
+        expect(csv_renderable_array.to_custom_csv).to eql("\n")
       end
     end
 
@@ -18,16 +24,13 @@ describe RenderCsv::CsvRenderable do
       let(:array) { [1, 2, 3] }
 
       it 'returns a csv of the array' do
-        expect(csv_renderable_array.to_custom_csv).to eql('1,2,3')
+        expect(csv_renderable_array.to_custom_csv).to eql("1,2,3\n")
       end
     end
   end
 
   context 'object is an ActiveRecord object' do
-    let(:sebastian) { Dog.create!(name: "Sebastian O'Connor", age: 3, weight: 76.8) }
-    let(:ruby) { Dog.create!(name: 'Ruby', age: 3, weight: 68.2) }
-    let(:shelby) { Dog.create!(name: 'Shelby', age: 5, weight: 64.0) }
-    let(:array) { [sebastian, ruby, shelby] }
+    let(:array) { Dog.all }
 
     context 'options is blank' do
       it 'returns all columns' do
@@ -47,7 +50,7 @@ describe RenderCsv::CsvRenderable do
       it 'excludes columns specified' do
         options = { except: [:age] }
 
-        expect(csv_renderable_array.to_custom_csv(options)).to eql "Id,Name,Weight\n7,Sebastian O'Connor,76.8\n8,Ruby,68.2\n9,Shelby,64.0\n"
+        expect(csv_renderable_array.to_custom_csv(options)).to eql "Id,Name,Weight\n1,Sebastian O'Connor,76.8\n2,Ruby,68.2\n3,Shelby,64.0\n"
       end
     end
 
@@ -55,7 +58,7 @@ describe RenderCsv::CsvRenderable do
       it 'includes specified method values' do
         options = { add_methods: [:human_age] }
 
-        expect(csv_renderable_array.to_custom_csv(options)).to eql "Id,Name,Age,Weight,Human age\n10,Sebastian O'Connor,3,76.8,25\n11,Ruby,3,68.2,25\n12,Shelby,5,64.0,33\n"
+        expect(csv_renderable_array.to_custom_csv(options)).to eql "Id,Name,Age,Weight,Human age\n1,Sebastian O'Connor,3,76.8,25\n2,Ruby,3,68.2,25\n3,Shelby,5,64.0,33\n"
       end
     end
 
@@ -68,10 +71,7 @@ describe RenderCsv::CsvRenderable do
     end
 
     context 'options with localized attribute names' do
-      before do
-        I18n.backend.load_translations('spec/files/ru.yml')
-        I18n.locale = :ru
-      end
+      before { I18n.locale = :ru }
 
       it 'includes localized column names in header' do
         options = { except: [:id,:name], add_methods: [:human_age] }
