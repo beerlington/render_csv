@@ -54,6 +54,14 @@ Will render a CSV file similar to:
 
 There are a few options you can use to customize which columns are included in the CSV file
 
+### Custom column headers
+
+```ruby
+respond_to do |format|
+  format.csv  { render csv: @locations, headers: { forename: 'First name', surname: 'Last name' } }
+end
+```
+
 ### Exclude columns
 
 ```ruby
