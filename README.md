@@ -86,6 +86,14 @@ respond_to do |format|
 end
 ```
 
+### Specify a custom header row
+
+```ruby
+respond_to do |format|
+  format.csv  { render csv: @locations, header: 'Address', 'Zip Code', only: [:address, :zip] }
+end
+```
+
 ## Copyright
 
 Copyright © 2011-2014 Peter Brown. See LICENSE.txt for
