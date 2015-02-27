@@ -65,5 +65,13 @@ describe RenderCsv::CsvRenderable do
         expect(csv_renderable_array.to_csv(options)).to eql "age,weight,human_age\n3,76.8,25\n3,68.2,25\n5,64.0,33\n"
       end
     end
+
+    context 'options with :header param' do
+      it 'returns header specified' do
+        options = { header: ['Name', 'Age'], only: [:name, :age] }
+
+        expect(csv_renderable_array.to_csv(options)).to eql "Name,Age\nSebastian O'Connor,3\nRuby,3\nShelby,5\n"
+      end
+    end
   end
 end

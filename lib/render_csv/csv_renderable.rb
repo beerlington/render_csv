@@ -7,6 +7,7 @@ module RenderCsv
     # :only => [:col1, :col2] # Specify which columns to include
     # :except => [:col1, :col2] # Specify which columns to exclude
     # :add_methods => [:method1, :method2] # Include addtional methods that aren't columns
+    # :header => ['Col1', 'Col2'] # Explicitly set the header
     def to_csv(options = {})
       return '' if empty?
       return join(',') unless first.class.respond_to? :column_names
@@ -17,7 +18,7 @@ module RenderCsv
       columns += options[:add_methods].map(&:to_s) if options[:add_methods]
 
       CSV.generate(encoding: 'utf-8') do |row|
-        row << columns
+        row << options[:header] ||= columns
         self.each do |obj|
           row << columns.map { |c| obj.send(c) }
         end
