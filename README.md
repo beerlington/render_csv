@@ -90,7 +90,7 @@ end
 
 ```ruby
 respond_to do |format|
-  format.csv  { render csv: @locations, header: 'Address', 'Zip Code', only: [:address, :zip] }
+  format.csv  { render csv: @locations, header: ['Address', 'Zip Code'], only: [:address, :zip] }
 end
 ```
 
