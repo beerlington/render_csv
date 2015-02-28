@@ -18,7 +18,7 @@ module RenderCsv
       columns += options[:add_methods].map(&:to_s) if options[:add_methods]
 
       CSV.generate(encoding: 'utf-8') do |row|
-        row << options[:header] ||= columns
+        row << options.fetch(:header, columns)
         self.each do |obj|
           row << columns.map { |c| obj.send(c) }
         end
