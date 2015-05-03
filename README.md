@@ -7,6 +7,13 @@
 
 Rails CSV renderer for ActiveRecord collections
 
+## Project Status - May 2015
+
+I am no longer maintaining this project. I have not been able to get it
+working predictably in newer versions of Rails or in production
+environments. If you want to add CSV rendering support to your Rails
+application, I do not recommend installing this gem.
+
 ## Rails & Ruby Versions Supported
 
 *Rails:* 3.0.x - 4.0.x
