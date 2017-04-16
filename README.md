@@ -44,7 +44,7 @@ Will render a CSV file similar to:
 
 <table>
   <tr>
-    <th>name</th><th>address</th><th>city</th><th>state</th><th>zip</th><th>created_at</th><th>updated_at</th>
+    <th>Name</th><th>Address</th><th>City</th><th>State</th><th>Zip</th><th>Created at</th><th>Updated at</th>
   </tr>
   <tr>
     <td>Pete's House</td><td>555 House Ln</td><td>Burlington</td><td>VT</td><td>05401</td><td>2011-07-26 03:12:44 UTC</td><td>2011-07-26 03:12:44 UTC</td>
@@ -92,6 +92,27 @@ respond_to do |format|
   format.csv  { render csv: @locations, except: [:id], add_methods: [:method1, :method2] }
 end
 ```
+
+### Add attributes in specific order. This set will be overwrite all :only, :except, :add_methods options
+
+```ruby
+respond_to do |format|
+  format.csv  { render csv: @locations, attributes: [:method2, :method1, :id] }
+end
+```
+
+### Options for generated CSV
+
+```ruby
+respond_to do |format|
+  format.csv  { render csv: @locations, csv_options: { col_sep: "\t", row_sep: "\r\n" } }
+end
+```
+
+### Localize column's names
+
+If you have translations for model's attributes under scope [:activerecord, :attributes, *model*] column names will be
+automatically translated.
 
 ## Copyright
 
