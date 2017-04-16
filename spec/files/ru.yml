@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    attributes:
+      dog:
+        id: ID
+        name: Имя
+        age: Возраст
+        weight: Вес
+        human_age: Человеческий возраст
